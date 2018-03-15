@@ -18,7 +18,10 @@ import com.kyrio.services.ErrorCode;
 import com.kyrio.services.KyrioAccount;
 import com.kyrio.services.KyrioException;
 
-public class KyrioRestClient {
+/**
+ * Abstract implementation of REST clients to call Kyrio services.
+ */
+public abstract class KyrioRestClient {
 	private static ObjectMapper _mapper = new ObjectMapper();
 	//private static TypeReference<Map<String, Object>> typeRef = new TypeReference<Map<String, Object>>() {};
 	
@@ -28,8 +31,15 @@ public class KyrioRestClient {
 		_mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 	}
 
+	/**
+	 * Kyrio account associated with this client
+	 */
 	protected KyrioAccount _account;
 
+	/**
+	 * Constructs this client and sets initial values.
+	 * @param account A Kyrio account associated with his client.
+	 */
     public KyrioRestClient(KyrioAccount account) {
         if (account == null)
             throw new NullPointerException("account cannot be null");
@@ -37,6 +47,13 @@ public class KyrioRestClient {
         _account = account;
     }
     
+    /**
+     * Creates HTTP client and sets default headers for all REST calls.
+     * @param url request URL
+     * @param method Operation method: GET, POST, PUT or DELETE
+     * @return Created HTTP client
+     * @throws IOException when something goes wrong.
+     */
     private HttpURLConnection createClient(URL url, String method)
 		throws IOException {
     	
@@ -53,6 +70,13 @@ public class KyrioRestClient {
         return client;
     }
 
+    /**
+     * Composes service URL based on server URL, operation route and parameters.
+     * @param route Base operation route
+     * @param parameters Operation query parameters
+     * @return Operation URI
+     * @throws IOException when something goes wrong
+     */
     private URL composeRequestUri(String route, Map<String, Object> parameters)
     	throws IOException {
         StringBuilder builder = new StringBuilder(_account.getServerUrl());
@@ -69,6 +93,12 @@ public class KyrioRestClient {
         return new URL(uri);
     }
 
+    /**
+     * Composes query parameters into encoded string.
+     * @param parameters Operation query parameters
+     * @return Encoded query parameter string
+     * @throws UnsupportedEncodingException should never happen.
+     */
     private String composeQueryParams(Map<String, Object> parameters)
     	throws UnsupportedEncodingException {
     	
@@ -91,6 +121,12 @@ public class KyrioRestClient {
         return builder.toString();
     }
 
+    /**
+     * Writes request content object with JSON representation of send data.
+     * @param client HTTP client
+     * @param value Value to be passed in request body.
+     * @throws IOException when communication fails.
+     */
     private void writeRequestContent(HttpURLConnection client, Object value)
 		throws IOException {
         
@@ -110,6 +146,12 @@ public class KyrioRestClient {
         }
     }
 
+    /**
+     * Reads JSON response string from response body.
+     * @param client HTTP client.
+     * @return a JSON string with response body.
+     * @throws IOException when communication fails.
+     */
     private String readResponseContent(HttpURLConnection client)
     	throws IOException {
     	    	
@@ -134,6 +176,14 @@ public class KyrioRestClient {
     	}
     }
     
+    /**
+     * Parses response body into specified object type
+     * @param type Expected type of response object
+     * @param client HTTP client
+     * @return Parsed response object of specified type or <code>null</code>
+     * @throws KyrioException returned by Kyrio server
+     * @throws IOException when communication fails
+     */
     private <T> T parseResponseContent(Class<T> type, HttpURLConnection client)
     	throws KyrioException, IOException {        
         try {
@@ -148,6 +198,13 @@ public class KyrioRestClient {
         }
     }
 
+    /**
+     * Parses response body into error message string
+     * @param client HTTP client
+     * @return Parsed response error message or <code>null</code>
+     * @throws KyrioException returned by Kyrio server
+     * @throws IOException when communication fails
+     */
     private String parseResponseError(HttpURLConnection client)
     	throws KyrioException, IOException {        
         try {
@@ -162,6 +219,16 @@ public class KyrioRestClient {
         }
     }
 
+    /**
+     * Invokes REST operation on the server and handles the response.
+     * @param type Expected type of response object.
+     * @param method Operation method: GET, POST, PUT or DELETE
+     * @param route Operation base route.
+     * @param parameters Operation query parameter.
+     * @param body Value to be sent in request body.
+     * @return Value returned by the server of expected type.
+     * @throws KyrioException returned by Kyrio server.
+     */
     protected <T> T invoke(Class<T> type, String method, String route,
 		Map<String, Object> parameters, Object body) throws KyrioException {
 
