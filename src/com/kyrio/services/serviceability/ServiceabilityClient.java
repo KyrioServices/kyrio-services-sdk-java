@@ -19,7 +19,7 @@ public class ServiceabilityClient extends KyrioRestClient {
 
     public ServiceabilityResult[] determineBusinessServiceability(
         String addressLine1, String addressLine2, String city,
-        String state, String postalCode, String country) throws KyrioException {
+        String state, String postalCode, String countryCode) throws KyrioException {
         
     	Address address = new Address();
         address.setLine1(addressLine1);
@@ -27,7 +27,7 @@ public class ServiceabilityClient extends KyrioRestClient {
         address.setCity(city);
         address.setState(state);
         address.setPostalCode(postalCode);
-        address.setCountry(country);
+        address.setCountryCode(countryCode);
 
         return determineBusinessServiceabilityForAddress(address);
     }
@@ -50,7 +50,7 @@ public class ServiceabilityClient extends KyrioRestClient {
     	parameters.put("city", address.getCity());
 		parameters.put("state", address.getState());
 		parameters.put("postal_code", address.getPostalCode());
-		parameters.put("country", address.getCountry());
+		parameters.put("country_code", address.getCountryCode());
 
         // Invoke operation on the server
         return invoke(ServiceabilityResult[].class, "GET", route, parameters, null);

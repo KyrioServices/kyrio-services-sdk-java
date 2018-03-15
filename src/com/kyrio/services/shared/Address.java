@@ -8,7 +8,7 @@ public class Address {
     private String _city;
     private String _state;
     private String _postalCode;
-    private String _country;
+    private String _countryCode;
 
     public Address() {}
     
@@ -32,7 +32,7 @@ public class Address {
     public String getPostalCode() { return _postalCode; }
     public void setPostalCode(String value) { _postalCode = value; }
 
-    @JsonProperty("country")
-    public String getCountry() { return _country; }
-    public void setCountry(String value) { _country = value; }
+    @JsonProperty("country_code")
+    public String getCountryCode() { return _countryCode; }
+    public void setCountryCode(String value) { _countryCode = value; }
 }
