@@ -12,9 +12,9 @@ Add maven dependencies to jackson and kyrio-service into your pom.xml file
     <version>2.7.5</version>
 </dependency>
 <dependency>
-    <groupId>com.kyrio</groupId>
+    <groupId>com.kyrio.kyrioservices</groupId>
     <artifactId>kyrio-services</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
