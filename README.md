@@ -50,6 +50,10 @@ public class ServiceabilitySample {
 }
 ```
 
+## References
+
+- [API Documentation](https://rawgit.com/KyrioServices/kyrio-services-sdk-java/master/doc/api/index.html)
+
 ## License
 
 This SDK is distributed under MIT license and free to use for all Kyrio clients.
