@@ -39,7 +39,7 @@
   </properties>
 
   <build>
-    <sourceDirectory>${basedir}/src, ${basedir}/sample</sourceDirectory>
+    <sourceDirectory>${basedir}/src</sourceDirectory>
     <testSourceDirectory>${basedir}/test</testSourceDirectory>
     <outputDirectory>${basedir}/obj/src</outputDirectory>
     <testOutputDirectory>${basedir}/obj/test</testOutputDirectory>
@@ -57,13 +57,6 @@
     <finalName>${project.artifactId}-${project.version}</finalName>
 
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
-        </configuration>
-      </plugin>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -106,14 +99,19 @@
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.0</version>
           <configuration>
+              <reportOutputDirectory>${basedir}/doc</reportOutputDirectory>
+              <destDir>api</destDir>
+<!--
               <quiet>true</quiet>
               <nonavbar>true</nonavbar>
               <notree>true</notree>
               <nocomment>true</nocomment>
               <nohelp>true</nohelp>
-
+-->
           </configuration>
+<!--
           <executions>
               <execution>
                   <id>attach-javadocs</id>
@@ -122,10 +120,12 @@
                   </goals>
               </execution>
           </executions>
+-->
       </plugin>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
           <executions>
               <execution>
                   <id>sign-artifacts</id>

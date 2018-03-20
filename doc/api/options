@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/sseroukhov/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.7.0/jackson-annotations-2.7.0.jar;C:/Users/sseroukhov/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.7.5/jackson-databind-2.7.5.jar;C:/Users/sseroukhov/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.7.5/jackson-core-2.7.5.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'D:/Projects/kyrio-ws/kyrio-services-sdk-java/src'
+-author
+-bottom
+'Copyright &#169; 2018. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'D:/Projects/kyrio-ws/kyrio-services-sdk-java/doc/api'
+-docencoding
+'UTF-8'
+-doctitle
+'Kyrio Online Services Java SDK 1.0.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'D:/Projects/kyrio-ws/kyrio-services-sdk-java/lib/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Kyrio Online Services Java SDK 1.0.0-SNAPSHOT API'
