@@ -1,6 +1,6 @@
-# Java SDK to Kyrio Online Services
+# Java SDK to Kyrio Services
 
-This SDK provides full access to Kyrio Online Services public API.
+This SDK provides full access to Kyrio Services public API.
 
 ## Install
 

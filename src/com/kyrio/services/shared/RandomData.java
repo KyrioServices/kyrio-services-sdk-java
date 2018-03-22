@@ -14,23 +14,23 @@ public class RandomData {
      */
     public static Provider[] PROVIDERS = new Provider[]
     {
-        new Provider("1002", "Time Warner Cable"),
-        new Provider("1005", "Comcast"),
-        new Provider("1008", "Adelphia"),
-        new Provider("1010", "Cox Communications"),
-        new Provider("1011", "Charter"),
-        new Provider("1012", "Insight Communications"),
-        new Provider("1014", "Mediacom"),
-        new Provider("1015", "Cablevision"),
-        new Provider("1016", "Cable One"),
-        new Provider("1017", "Bright House Networks"),
-        new Provider("1018", "Suddenlink"),
-        new Provider("1024", "Massillon Cable"),
-        new Provider("1027", "Clear Picture, Inc"),
-        new Provider("1099", "LotsACable"),
-        new Provider("1111", "Ridge Cable"),
-        new Provider("1236", "Mythical Cable"),
-        new Provider("1237", "NewMythical Cable")
+        new Provider("2000", "Local Test Cable Provider A"),
+        new Provider("2001", "Local Test Cable Provider B"),
+        new Provider("2002", "Local Test Cable Provider C"),
+        new Provider("2003", "Local Test Cable Provider D"),
+        new Provider("2004", "Local Test Cable Provider E"),
+        new Provider("2005", "Local Test Cable Provider F"),
+        new Provider("2006", "Local Test Cable Provider G"),
+        new Provider("2007", "Local Test Cable Provider H"),
+        new Provider("2008", "Local Test Cable Provider I"),
+        new Provider("2009", "Local Test Cable Provider J"),
+        new Provider("2010", "Local Test Cable Provider K"),
+        new Provider("2011", "Local Test Cable Provider L"),
+        new Provider("2012", "Local Test Cable Provider M"),
+        new Provider("2013", "Local Test Cable Provider N"),
+        new Provider("2014", "Local Test Cable Provider O"),
+        new Provider("2015", "Local Test Cable Provider P"),
+        new Provider("2016", "Local Test Cable Provider Q")
     };
 
     /**
