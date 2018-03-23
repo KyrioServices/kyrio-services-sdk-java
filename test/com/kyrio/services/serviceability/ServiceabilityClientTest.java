@@ -27,6 +27,7 @@ public class ServiceabilityClientTest {
         account.setClientId("999999");
         account.setEnableTestMock(true);
         account.setEnableTestError(false);
+        account.setEnableQaEnvironment(true);
 
         ServiceabilityClient client = account.createServiceabilityClient();
         ServiceabilityResult[] results = client.determineBusinessServiceability(

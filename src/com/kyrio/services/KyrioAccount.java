@@ -13,7 +13,7 @@ public class KyrioAccount {
     private static final String SERVER_URL_REGEX = "(https?:\\/\\/)?[\\w -]+(\\.[\\w-]+)+\\.?(:\\d+)?";
 
     private String _clientId;
-    private String _serverUrl = "http://localhost:7277";
+    private String _serverUrl;
     private boolean _enableTestLocal = false;
     private boolean _enableTestMock = false;
     private boolean _enableTestError = false;

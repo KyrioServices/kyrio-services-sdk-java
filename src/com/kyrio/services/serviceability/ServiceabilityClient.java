@@ -14,7 +14,7 @@ import com.kyrio.services.shared.Address;
  * Client to access Kyrio Serviceability API
  */
 public class ServiceabilityClient extends KyrioRestClient {
-    private static final String BASE_ROUTE = "/api/v1";
+    private static final String BASE_ROUTE = "/business/api/v1";
 
     /**
      * Default client constractor.
