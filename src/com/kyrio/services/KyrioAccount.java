@@ -26,7 +26,7 @@ public class KyrioAccount {
 
     /**
      * Gets identifier to confirm client who accesses the API.
-     * @returns A unique client ID
+     * @return A unique client ID
      */
     public String getClientId() { return _clientId; }
 
@@ -46,7 +46,7 @@ public class KyrioAccount {
 
     /**
      * Gets base url to connect to Kyrio servers.
-     * @returns A server URL to connect to
+     * @return A server URL to connect to
      */
     public String getServerUrl() {
         if (_serverUrl != null)
@@ -74,7 +74,7 @@ public class KyrioAccount {
 
     /**
      * Checks if enabled local test calls to return random responses.
-     * @returns <code>true</code> if local test calls are enabled or <code>false</code> otherwise
+     * @return <code>true</code> if local test calls are enabled or <code>false</code> otherwise
      */
     public boolean getEnableTestLocal() { return _enableTestLocal; }
 
@@ -89,7 +89,7 @@ public class KyrioAccount {
 
     /**
      * Checks if enabled remote test calls to return random responses.
-     * @returns <code>true</code> if remote test calls are enabled or <code>false</code> otherwise
+     * @return <code>true</code> if remote test calls are enabled or <code>false</code> otherwise
      */
     public boolean getEnableTestMock() { return _enableTestMock; }
 
@@ -103,7 +103,7 @@ public class KyrioAccount {
 
     /**
      * Checks if enabled random errors while making test calls.
-     * @returns <code>true</code> if random test errors are enabled or <code>false</code> otherwise
+     * @return <code>true</code> if random test errors are enabled or <code>false</code> otherwise
      */
     public boolean getEnableTestError() { return _enableTestError; }
 
@@ -117,7 +117,7 @@ public class KyrioAccount {
 
     /**
      * Checks if enabled calls to QA environment.
-     * @returns <code>true</code> to connect to QA servers or <code>false</code> to connect to Production servers
+     * @return <code>true</code> to connect to QA servers or <code>false</code> to connect to Production servers
      */
     public boolean getEnableQaEnvironment() { return _enableQaEnvironment; }
 
@@ -130,7 +130,7 @@ public class KyrioAccount {
 
     /**
      * Creates client to access Kyrio Serviceability API.
-     * @returns Client to access Kyrio Serviceability API.
+     * @return Client to access Kyrio Serviceability API.
      */
     public ServiceabilityClient createServiceabilityClient() {
         return new ServiceabilityClient(this);
