@@ -11,6 +11,16 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import java.security.KeyManagementException;
+import java.security.cert.X509Certificate;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -47,6 +57,39 @@ public abstract class KyrioRestClient {
         _account = account;
     }
     
+    private static SSLContext createSSLContext() {
+   	 	try {
+    	 TrustManager[] dummyTrustManager = new TrustManager[] { new X509TrustManager() {
+    	      public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+    	        return null;
+    	      }
+
+    	      public void checkClientTrusted(X509Certificate[] certs, String authType) {
+    	      }
+
+    	      public void checkServerTrusted(X509Certificate[] certs, String authType) {
+    	      }
+    	    }
+    	 };
+    	 
+    	 	SSLContext context = SSLContext.getInstance("SSL");
+    	 	context.init(null, dummyTrustManager, new java.security.SecureRandom());
+    	 	return context;
+    	} catch (Exception ex) {
+    		// This is never expected to happen
+    		return null;
+    	}
+    }
+    
+    private static HostnameVerifier createHostnameVerifier() {
+    	HostnameVerifier verifier = new HostnameVerifier() {
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        };
+        return verifier;
+    }
+    
     /**
      * Creates HTTP client and sets default headers for all REST calls.
      * @param url request URL
@@ -56,6 +99,16 @@ public abstract class KyrioRestClient {
      */
     private HttpURLConnection createClient(URL url, String method)
 		throws IOException {
+
+    	// Disable SSL certificate
+    	if (url.getProtocol().equals("https")) {
+    		SSLContext context = createSSLContext();
+    		if (context != null)
+    			HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
+    		
+    		HostnameVerifier verifier = createHostnameVerifier();
+    		HttpsURLConnection.setDefaultHostnameVerifier(verifier);    	
+    	}
     	
     	HttpURLConnection client = (HttpURLConnection) url.openConnection();
         
@@ -218,7 +271,7 @@ public abstract class KyrioRestClient {
             throw new KyrioException(ErrorCode.UNKNOWN, client.getResponseCode(), ex.getMessage(), ex);
         }
     }
-
+    
     /**
      * Invokes REST operation on the server and handles the response.
      * @param type Expected type of response object.
