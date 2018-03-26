@@ -53,6 +53,7 @@ public class ServiceabilitySample {
 ## References
 
 - [API Documentation](https://rawgit.com/KyrioServices/kyrio-services-sdk-java/master/doc/api/index.html)
+- [Development Guide](https://github.com/KyrioServices/kyrio-services-sdk-java/blob/master/doc/Development.md)
 
 ## License
 
